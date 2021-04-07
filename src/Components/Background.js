@@ -11,11 +11,11 @@ const Background = ()=>{
     useEffect(()=>{
       let hour = new Date().getHours();
       setHour(hour);
-      setInterval(()=>{
-         setCurrent((prevState)=>{
-             return (prevState+1)%Data1.length;
-         })
-      },4000);
+      // setInterval(()=>{
+      //    setCurrent((prevState)=>{
+      //        return (prevState+1)%Data1.length;
+      //    })
+      // },4000);
     },[]);
   return(
       <>

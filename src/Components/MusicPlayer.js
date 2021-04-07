@@ -14,6 +14,7 @@ const MusicPlayer = ()=>{
     const firstTimeRender = useRef(true);
     const music = useRef(null);
     const {currentSong} = useContext(CurrentSongContext);
+    let music_tracker = "";   //for storing the refernce of music.current
     // let audio = new Audio("Memories.mp3");
 //react allows us to add multiple useEffect hooks to perform different tasks.
 
@@ -40,6 +41,7 @@ useEffect(()=>{
         // console.log(currentSong.audio);
         console.log(music.current.duration);
         console.log(music.current.currentSrc);
+        music_tracker = music.current;  
         }
         else{
         music.current.pause();
@@ -47,8 +49,8 @@ useEffect(()=>{
         // console.log(music.current);
         return(()=>{
             // console.log("first");
-        if(music.current){
-            music.current.removeEventListener("timeupdate",update_time);
+        if(music_tracker){
+            music_tracker.removeEventListener("timeupdate",update_time);
         }
         });
     },[isPlaying]);

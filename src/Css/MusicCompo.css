@@ -1,0 +1,98 @@
+.music_compo_outer{
+    background-color: black;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* margin: 1px 0px; */
+}
+
+.music_compo_inner{
+    display: flex;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0px;
+    width: 90%;
+    /* position: relative; */
+    /* background-color: aqua; */
+}
+
+.music_text1,.music_text2{
+    color: white;
+    font-size: 20px;
+}
+
+.image_compo{
+    height: 100%;
+}
+
+.my_music_img{
+    height: 100%;
+}
+
+.steps1{
+    /* background-color: yellow; */
+    height: 100%;
+    margin-right: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.steps2{
+    /* background-color: yellowgreen; */
+    height: 100%;
+    margin-left: 25px;
+}
+
+.steps1 > .music_text1{
+    margin-top: 5px;
+}
+
+.steps1 > .music_text2{
+    margin-top: 145px;
+}
+
+.steps2 > .music_text1{
+    margin-top: 95px;
+}
+
+.steps2 > .music_text2{
+    margin-top: 145px;
+}
+
+@media(max-width: 900px){
+    .music_text1,.music_text2{
+        font-size: 15px;
+    }
+}
+
+@media(max-width: 620px){
+    .music_text1,.music_text2{
+        font-size: 12px;
+    }
+}
+
+/* @media(max-width: 360px){
+    .steps1{
+        margin-left: 10px;
+    }
+    .steps2{
+        margin-right: 10px;
+    }
+} */
+
+@media(max-width: 375px){
+    .music_compo_outer{
+        overflow-x: scroll;
+    }
+    .music_compo_inner{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        /* padding: 50px; */
+    }
+    .steps2{
+        margin-right: 20px;
+    }
+}
+

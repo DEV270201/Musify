@@ -1,0 +1,9 @@
+.down_head{
+    text-align: center;
+    margin-top: 15px;
+}
+
+.down_head  > span{
+    margin-right: 20px;
+    letter-spacing: 2px;
+}

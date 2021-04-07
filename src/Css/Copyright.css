@@ -1,0 +1,20 @@
+.copyright{
+    width: 100%;
+    text-align: center;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+}
+
+.cpy_1{
+    color: white;
+    margin: 5px 0px;
+}
+
+.cpy_2{
+    color: white;
+    margin: 5px 0px;
+}

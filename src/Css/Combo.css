@@ -1,0 +1,52 @@
+.outer_combo{
+    width: 100vw;
+    display: flex;
+    background-color: aqua;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.download_combo{
+    width: 35%;
+    background-color: bisque;
+}
+
+.music_combo{
+    width: 65%;
+    background-color: black;
+}
+
+@media(max-width: 1440px){
+    .download_combo{
+        width: 45%;
+    }
+    
+    .music_combo{
+        width: 55%;
+    }
+}
+
+@media(max-width: 1176px){
+    .download_combo{
+        width: 55%;
+    }
+    
+    .music_combo{
+        width: 45%;
+    }
+}
+
+@media(max-width: 930px){
+  .outer_combo{
+      display: flex;
+      flex-direction: column;
+  }
+
+  .download_combo{
+    width: 100%;
+}
+
+.music_combo{
+    width: 100%;
+}
+}

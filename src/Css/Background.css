@@ -1,0 +1,105 @@
+.outer_back{
+    height: 90vh;
+    width: 100%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    position: relative;
+}
+
+.banner{
+ position: absolute;
+ height: 100%;
+ width: 100%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ background-attachment: fixed;
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+}
+
+.greet_div{
+    position: absolute;
+    left: 0;
+    top: 3%;
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.greeting{
+    color: white;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.message{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.msg{
+    color: white;
+    font-weight: 300;
+    margin: 3px 0px;
+    font-weight: 600;
+}
+
+#span{
+   font-weight: 900;
+   animation: 1s animate infinite ease;
+}
+
+ @keyframes animate{
+    0%{
+        color:magenta;
+    }
+    33%{
+        color: yellow;
+    }
+    66%{
+        color:lightskyblue;
+    }
+    100%{
+        color:magenta;
+    }
+ }
+
+.download{
+    margin-top: 5px;
+    padding: 3px;
+    background-color: black;
+    color: white;
+    outline: none;
+    border: 1px solid black;
+    width: 200px;
+}
+
+.download:hover{
+    cursor: pointer;
+    background-color: red;
+    border: 1px solid red;
+}
+
+.download a{
+    color: white;
+    text-decoration: none;
+}
+
+.slide{
+    opacity: 0;
+    transition-duration: 1s ease;
+  }
+  
+  .slide.active{
+    opacity: 1;
+    transition-duration: 1s;
+  }
+  

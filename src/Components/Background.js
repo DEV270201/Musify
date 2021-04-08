@@ -8,14 +8,18 @@ import "../Css/Background.css";
 const Background = ()=>{
     const[hour,setHour] = useState(0);
     const[current,setCurrent] = useState(0);
+
+    useEffect(()=>{
+      console.log("hello 12");
+    });
     useEffect(()=>{
       let hour = new Date().getHours();
       setHour(hour);
-      // setInterval(()=>{
-      //    setCurrent((prevState)=>{
-      //        return (prevState+1)%Data1.length;
-      //    })
-      // },4000);
+      setInterval(()=>{                                     //timer for auto slideshow
+         setCurrent((prevState)=>{
+             return ((prevState+1) % Data1.length);
+         })
+      },4000);
     },[]);
   return(
       <>

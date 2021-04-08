@@ -10,16 +10,16 @@ const Background = ()=>{
     const[current,setCurrent] = useState(0);
 
     useEffect(()=>{
-      console.log("hello 12");
-    });
-    useEffect(()=>{
       let hour = new Date().getHours();
       setHour(hour);
-      setInterval(()=>{                                     //timer for auto slideshow
+      const value = setInterval(()=>{                                     //timer for auto slideshow
          setCurrent((prevState)=>{
              return ((prevState+1) % Data1.length);
          })
       },4000);
+     return(()=>{
+           clearInterval(value);
+     });
     },[]);
   return(
       <>

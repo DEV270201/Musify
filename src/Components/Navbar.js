@@ -34,9 +34,9 @@ const Navbar = ()=>{
             <ul className={menu ? "list active" : "list"}>
                 <h4  className={menu ? "link_head active_head" : "link_head"}><FontAwesomeIcon size="lg" className="music" icon={faMusic}/>Musify</h4>
                 <hr />
-                <li><NavLink className="nav_link" exact to="/" >Home</NavLink></li>
-                <li><NavLink className="nav_link" to="/online" >Online</NavLink></li>
-                <li><NavLink className="nav_link" to="/favourite" >Favourites</NavLink></li>
+                <li onClick={()=> setMenu(!menu)}><NavLink className="nav_link"  exact to="/" >Home</NavLink></li>
+                <li onClick={()=> setMenu(!menu)}><NavLink className="nav_link"  to="/online" >Online</NavLink></li>
+                <li onClick={()=> setMenu(!menu)}><NavLink className="nav_link"  to="/favourite" >Favourites</NavLink></li>
             </ul>
         </nav>
         </>

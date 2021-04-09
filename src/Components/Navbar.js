@@ -1,12 +1,14 @@
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect, useContext} from "react";
 import {faBars,faMusic} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {NavLink} from "react-router-dom";
 import "../Css/Navbar.css";
+import { ThemeContext } from "../Context/ThemeContextProvider";
 
 const Navbar = ()=>{
     const [menu,setMenu] = useState(false);
     const [color,setColor] = useState(false);
+    const {theme_status , changeTheme} = useContext(ThemeContext);
 
     useEffect(()=>{
 
@@ -27,7 +29,11 @@ const Navbar = ()=>{
     },[]);
 
     const myfunc = ()=>{
-        console.log("clicked");
+        if(theme_status === "light"){
+            changeTheme("dark");
+        }else{
+            changeTheme("light");
+        }
     }
 
     return(

@@ -4,13 +4,16 @@ import './index.css';
 import App from "./Components/App";
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
-import {CurrentSongProvider} from "./Context/CurrentSongProvider";
+import { CurrentSongProvider } from "./Context/CurrentSongProvider";
+import { ThemeContextProvider } from './Context/ThemeContextProvider';
 
 ReactDOM.render(
   <>
   <BrowserRouter>
   <CurrentSongProvider>
+   <ThemeContextProvider>
   <App />
+   </ThemeContextProvider>
   </CurrentSongProvider>
   </BrowserRouter>
   </>,

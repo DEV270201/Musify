@@ -55,9 +55,11 @@
 
   .download_combo{
     width: 100%;
+    order: 2;
 }
 
 .music_combo{
     width: 100%;
+    order: 1;
 }
 }

@@ -7,7 +7,7 @@ import {CurrentSongContext} from "../Context/CurrentSongProvider";
 
 
 const MusicPlayer = ()=>{
-    const[isPlaying, setPlay] = useState(true);  //to check whether the song is playing or not
+    const[isPlaying, setPlay] = useState(false);  //to check whether the song is playing or not
     const[current_time,setTime] = useState(0);   // to trace the current time of the music
     const[liked,setLike] = useState(false);     //to check whether the video is liked or not
     const[replay,setReplay] = useState(false);  //to check whether the song is on repeat or not
@@ -118,7 +118,7 @@ useEffect(()=>{
         <div className="outer">
             <div className="inner">
                 <div className="music_details">
-                    <h2 className="song"><FontAwesomeIcon icon={faMusic}/>{currentSong.name}</h2>
+                    <h2 className="song"><span id="a1"><FontAwesomeIcon icon={faMusic}/></span><span id="a2">{currentSong.name}</span></h2>
                     <h4 className="artist">{currentSong.artist}</h4>
                 </div>
                 <img className={isPlaying ? "myimg anime" : "myimg"} src={currentSong.src} alt="song cover page" />

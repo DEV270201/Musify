@@ -87,7 +87,7 @@
 
 @media(max-width: 370px){
     .img_class img{
-        height: 70px;
+        height: 80px;
         width: 90px;
     }
 }

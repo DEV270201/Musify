@@ -3,6 +3,7 @@
     display: flex;
     background-color: aqua;
     justify-content: center;
+    overflow-x: hidden;
     /* align-items: center; */
 }
 
@@ -51,6 +52,7 @@
   .outer_combo{
       display: flex;
       flex-direction: column;
+      overflow-x: hidden;
   }
 
   .download_combo{

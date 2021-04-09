@@ -26,6 +26,10 @@ const Navbar = ()=>{
 
     },[]);
 
+    const myfunc = ()=>{
+        console.log("clicked");
+    }
+
     return(
         <>
         <nav className={color ? "nav_bar activate" : "nav_bar "}>
@@ -38,6 +42,11 @@ const Navbar = ()=>{
                 <li onClick={()=> setMenu(!menu)}><NavLink className="nav_link"  to="/online" >Online</NavLink></li>
                 <li onClick={()=> setMenu(!menu)}><NavLink className="nav_link"  to="/favourite" >Favourites</NavLink></li>
             </ul>
+            <div className="toggle">
+            <h2 style={{color:"white"}}>DARK</h2>
+            <input type="checkbox" onClick={myfunc} id="switch" /><label htmlFor="switch">Toggle</label>
+            <h2 style={{color:"white"}}>LIGHT</h2>
+            </div>
         </nav>
         </>
     );

@@ -13,7 +13,9 @@ const Download = ()=>{
     // },[]);
     return(
        <>
-       <h2 className="down_head"><FontAwesomeIcon icon={faDownload}/><span>Your Downloads...</span></h2>
+       <h2 className="down_head"><span id="a1"><FontAwesomeIcon icon={faDownload}/></span><span id="a2">Your Downloads...</span></h2>
+       <br />
+       <hr style={{backgroundColor:"black"}}/>
        <br />
        {
            Data.map((song,index)=>{

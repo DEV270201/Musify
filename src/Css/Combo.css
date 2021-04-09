@@ -7,13 +7,24 @@
 }
 
 .download_combo{
-    width: 35%;
+    width: 25%;
     background-color: bisque;
 }
 
 .music_combo{
-    width: 65%;
+    width: 75%;
     background-color: black;
+}
+
+
+@media(max-width: 2084px){
+    .download_combo{
+        width: 35%;
+    }
+    
+    .music_combo{
+        width: 65%;
+    }
 }
 
 @media(max-width: 1440px){

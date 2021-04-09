@@ -62,7 +62,7 @@
 }
 
 .buttons > .start_btn{
-    width: 75px;
+    width: 150px;
     outline: none;
     border-radius: 2px;
     text-transform: uppercase;
@@ -76,4 +76,18 @@
 
 .buttons > .start_btn:hover{
     cursor: pointer;
+}
+
+
+@media(max-width: 468px){
+    .details_outer{
+        width: 90%;
+    }
+}
+
+@media(max-width: 370px){
+    .img_class img{
+        height: 70px;
+        width: 90px;
+    }
 }

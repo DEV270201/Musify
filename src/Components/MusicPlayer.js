@@ -7,7 +7,7 @@ import {CurrentSongContext} from "../Context/CurrentSongProvider";
 
 
 const MusicPlayer = ()=>{
-    const[isPlaying, setPlay] = useState(false);  //to check whether the song is playing or not
+    const[isPlaying, setPlay] = useState(true);  //to check whether the song is playing or not
     const[current_time,setTime] = useState(0);   // to trace the current time of the music
     const[liked,setLike] = useState(false);     //to check whether the video is liked or not
     const[replay,setReplay] = useState(false);  //to check whether the song is on repeat or not
@@ -22,8 +22,15 @@ const MusicPlayer = ()=>{
 
 useEffect(()=>{
     music.current.src = currentSong.audio;
+    // setPlay(true);
     console.log("first");
     // console.log(music.current.currentSrc);
+    // return(
+    //     ()=>{
+    //         console.log("returned");
+    //         setPlay(false);
+    //     }
+    // );
 },[currentSong]);
 
     useEffect(()=>{
@@ -39,11 +46,10 @@ useEffect(()=>{
         music.current.addEventListener("timeupdate",update_time);
         music.current.addEventListener("ended", ()=>  music.current.play());
         // console.log(currentSong.audio);
-        console.log(music.current.duration);
-        console.log(music.current.currentSrc);
         var music_tracker = music.current;   //for storing the refernce of music.current  
         }
         else{
+        console.log("paused");
         music.current.pause();
         }
         // console.log(music.current);

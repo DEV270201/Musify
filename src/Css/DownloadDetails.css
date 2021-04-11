@@ -1,8 +1,8 @@
 .details_outer{
     width: 80%;
-    margin: 10px auto;
+    margin: 30px auto;
     display: flex;
-    background-color: teal;
+    /* background-color: teal; */
     border-radius: 10px;
     /* position: relative; */
 }
@@ -59,6 +59,7 @@
     display: flex;
     justify-content: flex-end;
     margin-right: 20px;
+    margin-bottom: 10px;
 }
 
 .buttons > .start_btn{
@@ -66,10 +67,11 @@
     outline: none;
     border-radius: 2px;
     text-transform: uppercase;
-    background-color: darkviolet;
-    color: white;
+    /* background-color: darkviolet; */
+    /* color: white; */
     font-weight: 300;
-    border: 1px solid darkviolet;
+    font-style: italic;
+    /* border: 1px solid darkviolet; */
     padding: 5px;
     letter-spacing: 2px;
 }

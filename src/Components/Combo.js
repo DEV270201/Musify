@@ -6,7 +6,7 @@ import {ThemeContext} from "../Context/ThemeContextProvider";
 
 
 const Combo = ()=>{
-  const {theme_status} = useContext(ThemeContext);
+  const {theme_status,theme} = useContext(ThemeContext);
   useEffect(()=>{
     console.log(theme_status);
   })
@@ -14,7 +14,7 @@ const Combo = ()=>{
       <>
       <div className="outer_combo">
       {/* <CurrentSongProvider> */}
-          <div className="download_combo">
+          <div className="download_combo" style={{backgroundColor : `${theme.backgroundColor}`, color : `${theme.color}`}}>
              <Download />
           </div>
           <div className="music_combo">

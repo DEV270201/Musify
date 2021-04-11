@@ -49,9 +49,9 @@ const Navbar = ()=>{
                 <li onClick={()=> setMenu(!menu)}><NavLink className="nav_link"  to="/favourite" >Favourites</NavLink></li>
             </ul>
             <div className="toggle">
-            <h2 style={{color:"white"}}>DARK</h2>
+            <h2 style={{color:"white"}}>Light</h2>
             <input type="checkbox" onClick={myfunc} id="switch" /><label htmlFor="switch">Toggle</label>
-            <h2 style={{color:"white"}}>LIGHT</h2>
+            <h2 style={{color:"white"}}>Dark</h2>
             </div>
         </nav>
         </>

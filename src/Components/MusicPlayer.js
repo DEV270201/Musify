@@ -4,6 +4,7 @@ import { faPlay,faBackward,faForward,faPause,faMusic,faRedo} from '@fortawesome/
 import {faHeart} from "@fortawesome/free-regular-svg-icons";
 import "../Css/musicPlayer.css";
 import {CurrentSongContext} from "../Context/CurrentSongProvider";
+import {ThemeContext} from "../Context/ThemeContextProvider";
 
 
 const MusicPlayer = ()=>{
@@ -14,6 +15,8 @@ const MusicPlayer = ()=>{
     const firstTimeRender = useRef(true);
     const music = useRef(null);
     const {currentSong} = useContext(CurrentSongContext);
+    const {theme} = useContext(ThemeContext);
+
     
     // let audio = new Audio("Memories.mp3");
 //react allows us to add multiple useEffect hooks to perform different tasks.
@@ -96,30 +99,30 @@ useEffect(()=>{
     }
 
     const add_to_fav = ()=>{
-        alert("added to the fav");
+        console.log("added to the fav");
         // console.log(Data[1].isLiked);
         // Data[1].isLiked = true;
     }
 
     const remove_from_fav = ()=>{
-        alert("removed from  the fav");
+        console.log("removed from  the fav");
     }
 
     const add_to_repeat = ()=>{
-        alert("added to the repeat");
+        console.log("added to the repeat");
     }
      
     const remove_from_repeat = ()=>{
-        alert("removed from  the repeat");
+        console.log("removed from  the repeat");
     }
 
     return(
         <>
-        <div className="outer">
-            <div className="inner">
+        <div className="outer" style={{backgroundColor : `${theme.backgroundColor}`}}>
+            <div className="inner" style={{backgroundColor : `${theme.backgroundColor}`}}>
                 <div className="music_details">
-                    <h2 className="song"><span id="a1"><FontAwesomeIcon icon={faMusic}/></span><span id="a2">{currentSong.name}</span></h2>
-                    <h4 className="artist">{currentSong.artist}</h4>
+                    <h2 className="song" style={{color : `${theme.color}`}}><span id="a1"><FontAwesomeIcon icon={faMusic}/></span><span id="a2">{currentSong.name}</span></h2>
+                    <h4 className="artist" style={{color : `${theme.color}`}}>{currentSong.artist}</h4>
                 </div>
                 <img className={isPlaying ? "myimg anime" : "myimg"} src={currentSong.src} alt="song cover page" />
                 <audio className="music" ref={music}>
@@ -127,23 +130,23 @@ useEffect(()=>{
                  </audio>
                 <div className="progressbar">
                     <div className="timer">
-                        <h5 className="start">{Math.floor(current_time)} s</h5>
-                        <h5 className="end">{currentSong.end} s</h5>
+                        <h5 className="start" style={{color : `${theme.color}`}}>{Math.floor(current_time)} s</h5>
+                        <h5 className="end" style={{color : `${theme.color}`}}>{currentSong.end} s</h5>
                     </div>
-                    <div className="progress_outer" onClick={change_time}>
+                    <div className="progress_outer" onClick={change_time} style={{background : `${theme.backgroundColor}`}}>
                         <div className="progress" style={{width: `${Math.floor(current_time/currentSong.end * 100)}%`}}></div>
                     </div>
                 </div>
                 <div className="music_controls">
-                    <div className="prev"><FontAwesomeIcon icon={faBackward}/></div>
-                    <div className="play_outer">
+                    <div className="prev" style={{color : `${theme.color}`}}><FontAwesomeIcon icon={faBackward}/></div>
+                    <div className="play_outer" style={{color : `${theme.color}` , backgroundColor : `${theme.backgroundColor}`}}>
                         <div className="play" onClick={myfunc}><FontAwesomeIcon icon={isPlaying ? faPause : faPlay}/></div>
                     </div>
-                    <div className="next"><FontAwesomeIcon icon={faForward}/></div>
+                    <div className="next" style={{color : `${theme.color}`}}><FontAwesomeIcon icon={faForward}/></div>
                 </div>
                 <div className="icons">
-                <div className={`repeat ${replay ? "addrepeat" : "" }`} onClick={()=> update_info_repeat()} ><FontAwesomeIcon title="Repeat" icon={faRedo}/></div>
-                <div className={`like ${liked ? "addeffect" : "" }`} onClick={()=> update_info_like()}><FontAwesomeIcon title="Like" icon={faHeart}/></div>
+                <div className={`repeat ${replay ? "addrepeat" : "" }`} style={{color : `${theme.color}`}} onClick={()=> update_info_repeat()} ><FontAwesomeIcon title="Repeat" icon={faRedo}/></div>
+                <div className={`like ${liked ? "addeffect" : "" }`} style={{color : `${theme.color}`}} onClick={()=> update_info_like()}><FontAwesomeIcon title="Like" icon={faHeart}/></div>
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@ export const ThemeContextProvider = (props)=>{
     }
 
     const light = {
-        backgroundColor : "white",
+        backgroundColor : "#D1E8E2",
         color : "black",
     }
 

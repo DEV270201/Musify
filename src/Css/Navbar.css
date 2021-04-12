@@ -174,3 +174,17 @@ input:checked + label:after {
 /* label:active:after {
 	width: 130px;
 } */
+
+.toggle{
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* background-color: #bada55; */
+}
+
+.toggle > h4{
+    font-weight: 200;
+    font-style: italic;
+    color: white;
+}

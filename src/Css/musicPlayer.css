@@ -103,9 +103,9 @@
         transform: rotate(360deg);
     }
 }
-/* .next,.prev{
-    color:#f5f6fa;
-} */
+.next:hover , .prev:hover{
+    cursor: pointer;
+}
 
 .progressbar{
     width: 100%;

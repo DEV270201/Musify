@@ -155,11 +155,11 @@ useEffect(()=>{
                     </div>
                 </div>
                 <div className="music_controls">
-                    <div className="prev" onClick={prevMusic} style={{color : `${theme.color}`}}><FontAwesomeIcon icon={faBackward}/></div>
+                    <div className="prev" onClick={prevMusic} style={{color : `${theme.color}`}}><FontAwesomeIcon title="Previous" icon={faBackward}/></div>
                     <div className="play_outer" style={{color : `${theme.color}` , backgroundColor : `${theme.backgroundColor}`}}>
-                        <div className="play" onClick={myfunc}><FontAwesomeIcon icon={isPlaying ? faPause : faPlay}/></div>
+                        <div className="play" onClick={myfunc}><FontAwesomeIcon title={`${isPlaying ? 'Playing' : 'Paused'}`} icon={isPlaying ? faPause : faPlay}/></div>
                     </div>
-                    <div className="next" onClick={nextMusic} style={{color : `${theme.color}`}}><FontAwesomeIcon icon={faForward}/></div>
+                    <div className="next" onClick={nextMusic} style={{color : `${theme.color}`}}><FontAwesomeIcon title="Next" icon={faForward}/></div>
                 </div>
                 <div className="icons">
                 <div className={`repeat ${replay ? "addrepeat" : "" }`} style={{color : `${theme.color}`}} onClick={()=> update_info_repeat()} ><FontAwesomeIcon title="Repeat" icon={faRedo}/></div>

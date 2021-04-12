@@ -21,7 +21,7 @@ const Download = ()=>{
            Data.map((song,index)=>{
             return(
                 <div key={index}>
-                   <DownloadDetails song={song} />
+                   <DownloadDetails song={song} index={index} />
                 </div>
             );  
 

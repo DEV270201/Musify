@@ -5,6 +5,7 @@ import {faHeart} from "@fortawesome/free-regular-svg-icons";
 import "../Css/musicPlayer.css";
 import {CurrentSongContext} from "../Context/CurrentSongProvider";
 import {ThemeContext} from "../Context/ThemeContextProvider";
+import Data from "../musicData/Data";
 
 
 const MusicPlayer = ()=>{
@@ -14,7 +15,7 @@ const MusicPlayer = ()=>{
     const[replay,setReplay] = useState(false);  //to check whether the song is on repeat or not
     const firstTimeRender = useRef(true);
     const music = useRef(null);
-    const {currentSong} = useContext(CurrentSongContext);
+    const {currentSong , play_new_song} = useContext(CurrentSongContext);
     const {theme} = useContext(ThemeContext);
 
     
@@ -27,6 +28,7 @@ useEffect(()=>{
     music.current.src = currentSong.audio;
     // setPlay(true);
     console.log("first");
+    // console.log("current song" , currentSong);
     // console.log(music.current.currentSrc);
     // return(
     //     ()=>{
@@ -116,6 +118,18 @@ useEffect(()=>{
         console.log("removed from  the repeat");
     }
 
+    const nextMusic = ()=>{
+      play_new_song(Data[(currentSong.index + 1) % Data.length],(currentSong.index + 1) % Data.length);
+    }
+
+    const prevMusic = ()=>{
+        if(currentSong.index === 0){
+           play_new_song(Data[Data.length-1],Data.length-1);
+        }else{
+            play_new_song(Data[currentSong.index-1],currentSong.index - 1);
+        }
+    }
+
     return(
         <>
         <div className="outer" style={{backgroundColor : `${theme.backgroundColor}`}}>
@@ -138,11 +152,11 @@ useEffect(()=>{
                     </div>
                 </div>
                 <div className="music_controls">
-                    <div className="prev" style={{color : `${theme.color}`}}><FontAwesomeIcon icon={faBackward}/></div>
+                    <div className="prev" onClick={prevMusic} style={{color : `${theme.color}`}}><FontAwesomeIcon icon={faBackward}/></div>
                     <div className="play_outer" style={{color : `${theme.color}` , backgroundColor : `${theme.backgroundColor}`}}>
                         <div className="play" onClick={myfunc}><FontAwesomeIcon icon={isPlaying ? faPause : faPlay}/></div>
                     </div>
-                    <div className="next" style={{color : `${theme.color}`}}><FontAwesomeIcon icon={faForward}/></div>
+                    <div className="next" onClick={nextMusic} style={{color : `${theme.color}`}}><FontAwesomeIcon icon={faForward}/></div>
                 </div>
                 <div className="icons">
                 <div className={`repeat ${replay ? "addrepeat" : "" }`} style={{color : `${theme.color}`}} onClick={()=> update_info_repeat()} ><FontAwesomeIcon title="Repeat" icon={faRedo}/></div>

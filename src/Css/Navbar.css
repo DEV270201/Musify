@@ -8,6 +8,7 @@
     padding: 0 100px;
     /* position: fixed; */
     z-index: 99;
+    border-bottom: 2px solid white;
 }
 
 .nav_logo a{

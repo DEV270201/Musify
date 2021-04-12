@@ -3,7 +3,7 @@ import "../Css/DownloadDetails.css";
 import {CurrentSongContext} from "../Context/CurrentSongProvider";
 import {ThemeContext} from "../Context/ThemeContextProvider";
 
-const DownloadDetails = ({song})=>{
+const DownloadDetails = ({song,index})=>{
     
     const {currentSong,play_new_song} = useContext(CurrentSongContext);
     const {theme} = useContext(ThemeContext);
@@ -21,8 +21,8 @@ const DownloadDetails = ({song})=>{
     }
 
     const playNewSong = ()=>{
-       console.log("calling the context method");
-       play_new_song(song);
+    //    console.log("calling the context method");
+       play_new_song(song,index);
     }
 
     // useEffect(()=>{

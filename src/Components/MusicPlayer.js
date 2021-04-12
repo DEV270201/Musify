@@ -49,7 +49,10 @@ useEffect(()=>{
         console.log("second");
         music.current.play();
         music.current.addEventListener("timeupdate",update_time);
-        music.current.addEventListener("ended", ()=>  music.current.play());
+        music.current.addEventListener("ended", ()=>{
+            //   play_new_song(Data[(currentSong.index + 1) % Data.length],(currentSong.index + 1) % Data.length); 
+                 music.current.play();
+            });  
         // console.log(currentSong.audio);
         var music_tracker = music.current;   //for storing the refernce of music.current  
         }

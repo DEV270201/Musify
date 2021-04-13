@@ -50,15 +50,15 @@
 
 #span{
     font-weight: 900;
-    animation: 1s animate infinite ease, 1.5s slider infinite alternate ease;
+    animation: 1s animate infinite ease, 1s slider infinite alternate ease;
  }
 
  @keyframes slider{
      from{
-         transform: translateY(-15px);
+         transform: translateY(-20px);
      }
      to{
-         transform: translateY(15px);
+         transform: translateY(20px);
      }
  }
  

@@ -3,6 +3,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    padding-top: 15px;
     /* margin: 1px 0px; */
 }
 
@@ -96,3 +97,29 @@
     }
 }
 
+.music_compo_head{
+    color: white;
+    font-weight: 300;
+    font-style: italic;
+    text-align: center;
+    background-color: black;
+    /* margin-bottom: 15px; */
+    /* border-bottom: 1px solid white; */
+    text-decoration: overline;
+    animation: animate 1s infinite;
+}
+
+@keyframes animate{
+    0%{
+        color:magenta;
+    }
+    33%{
+        color: yellow;
+    }
+    66%{
+        color:lightskyblue;
+    }
+    100%{
+        color:magenta;
+    }
+ }

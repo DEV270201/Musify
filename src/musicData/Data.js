@@ -4,6 +4,8 @@ import Music2 from "../Music/IllahiInstrument.mp3";
 import Music4 from "../Music/Sapna_Jahaan.mpeg";
 import Music5 from "../Music/Gulabi Aankhen.mpeg";
 import Music6 from "../Music/Pal Pal Dil.mpeg";
+import Music7 from "../Music/Tum Gaye Ho Kyun.mpeg";
+import Music8 from "../Music/Abhi Abhi Toh Mile.mpeg";
 
 
 
@@ -61,8 +63,25 @@ const Data = [
         end : 329,
         isLiked : false,
         isRepeat : false,
-    }
-    
+    },
+    {
+        src : "https://www.lyricsbogie.com/wp-content/uploads/2020/07/jiyein-kyun-lyrics.jpg?fit=480%2C360&ssl=1",
+        name : "Tum Gaye Ho Kyun",
+        artist : "Papon",
+        audio : Music7,
+        end : 267,
+        isLiked : false,
+        isRepeat : false,
+    },
+    {
+        src : "https://lyricstaal.com/wp-content/uploads/2012/08/jism-2-Abhi-Abhi-Toh-Mile.jpg",
+        name : "Abhi Abhi Toh Mile",
+        artist : "k.k - Arko - Munish",
+        audio : Music8,
+        end : 360,
+        isLiked : false,
+        isRepeat : false,
+    },
 ];
 
 export default Data;

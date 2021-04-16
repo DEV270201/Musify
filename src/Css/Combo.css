@@ -9,7 +9,7 @@
 .download_combo{
     width: 25%;
     height: 95vh;
-    overflow-y : scroll;
+    overflow : auto;
     /* background-color: bisque; */
 }
 

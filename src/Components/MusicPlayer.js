@@ -14,6 +14,8 @@ const MusicPlayer = ()=>{
     const[liked,setLike] = useState(false);     //to check whether the video is liked or not
     const[replay,setReplay] = useState(false);  //to check whether the song is on repeat or not
     const firstTimeRender = useRef(true);
+    const[minute,setMinute] = useState("00");
+    const[seconds,setSeconds] = useState("00");
     const music = useRef(null);
     const {currentSong , play_new_song} = useContext(CurrentSongContext);
     const {theme} = useContext(ThemeContext);
@@ -68,6 +70,18 @@ useEffect(()=>{
         }
         });
     },[isPlaying]);
+
+    useEffect(()=>{
+        let sec = Math.floor(current_time) % 60;
+        let min = Math.floor(Math.floor(current_time) / 60);
+        // console.log(sec + "   " + min);
+        let computedsec = String(sec).length === 1 ? `0${sec}` : `${sec}`;
+        let computedMin = String(min).length === 1 ? `0${min}` : `${min}`;
+
+        setSeconds(computedsec);
+        setMinute(computedMin);
+
+    },[current_time]);
 
     useEffect(()=>{
         if(!firstTimeRender.current)
@@ -147,8 +161,8 @@ useEffect(()=>{
                  </audio>
                 <div className="progressbar">
                     <div className="timer">
-                        <h5 className="start" style={{color : `${theme.color}`}}>{Math.floor(current_time)} s</h5>
-                        <h5 className="end" style={{color : `${theme.color}`}}>{currentSong.end} s</h5>
+                        <h5 className="start" style={{color : `${theme.color}`}}>{minute} : {seconds}</h5>
+                        <h5 className="end" style={{color : `${theme.color}`}}>{currentSong.end}</h5>
                     </div>
                     <div className="progress_outer" onClick={change_time} style={{background : `${theme.backgroundColor}`}}>
                         <div className="progress" style={{width: `${Math.floor(current_time/currentSong.end * 100)}%`}}></div>

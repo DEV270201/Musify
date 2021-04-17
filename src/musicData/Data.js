@@ -6,7 +6,7 @@ import Music5 from "../Music/Gulabi Aankhen.mpeg";
 import Music6 from "../Music/Pal Pal Dil.mpeg";
 import Music7 from "../Music/Tum Gaye Ho Kyun.mpeg";
 import Music8 from "../Music/Abhi Abhi Toh Mile.mpeg";
-
+import Music9 from "../Music/Marz.mpeg";
 
 
 const Data = [
@@ -79,6 +79,15 @@ const Data = [
         artist : "k.k - Arko - Munish",
         audio : Music8,
         end : "06 : 00",
+        isLiked : false,
+        isRepeat : false,
+    },
+    {
+        src : "https://i.ytimg.com/vi/jsyqKDcbFs0/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBjIVWqLd_8nK24zr7GtUC2j9boeQ",
+        name : "Marz",
+        artist : "The Yellow Diary",
+        audio : Music9,
+        end : "03 : 42",
         isLiked : false,
         isRepeat : false,
     },

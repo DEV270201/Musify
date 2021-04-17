@@ -16,6 +16,7 @@ const MusicPlayer = ()=>{
     const firstTimeRender = useRef(true);
     const[minute,setMinute] = useState("00");
     const[seconds,setSeconds] = useState("00");
+    const[progressWidth,setProgressWidth] = useState(0); //for chaning the width of the progress bar
     const music = useRef(null);
     const {currentSong , play_new_song} = useContext(CurrentSongContext);
     const {theme} = useContext(ThemeContext);
@@ -28,6 +29,7 @@ const MusicPlayer = ()=>{
 
 useEffect(()=>{
     music.current.src = currentSong.audio;
+    // setDuration(document.querySelector(".music").duration);
     // setPlay(true);
     console.log("first");
     // console.log("current song" , currentSong);
@@ -43,9 +45,10 @@ useEffect(()=>{
     useEffect(()=>{
 
         const update_time = (event)=>{
-            // console.log(event);
-            // console.log(event.target.currentTime);
+       
+            // console.log(progressWidth);
             setTime(event.target.currentTime);
+            setProgressWidth(Math.floor(event.target.currentTime/event.target.duration * 100));
         }
         if(isPlaying){
         console.log("second");
@@ -71,6 +74,7 @@ useEffect(()=>{
         });
     },[isPlaying]);
 
+    //Music Timer
     useEffect(()=>{
         let sec = Math.floor(current_time) % 60;
         let min = Math.floor(Math.floor(current_time) / 60);
@@ -83,11 +87,13 @@ useEffect(()=>{
 
     },[current_time]);
 
+    //Liked/Disliked
     useEffect(()=>{
         if(!firstTimeRender.current)
         liked ? add_to_fav() : remove_from_fav();
     },[liked]);
 
+    //repeat/notRepeat
     useEffect(()=>{
         if(!firstTimeRender.current)
         replay ? add_to_repeat() : remove_from_repeat();
@@ -135,10 +141,12 @@ useEffect(()=>{
         console.log("removed from  the repeat");
     }
 
+     //changing the song
     const nextMusic = ()=>{
       play_new_song(Data[(currentSong.index + 1) % Data.length],(currentSong.index + 1) % Data.length);
     }
 
+    //changing the song
     const prevMusic = ()=>{
         if(currentSong.index === 0){
            play_new_song(Data[Data.length-1],Data.length-1);
@@ -165,7 +173,7 @@ useEffect(()=>{
                         <h5 className="end" style={{color : `${theme.color}`}}>{currentSong.end}</h5>
                     </div>
                     <div className="progress_outer" onClick={change_time} style={{background : `${theme.backgroundColor}`}}>
-                        <div className="progress" style={{width: `${Math.floor(current_time/currentSong.end * 100)}%`}}></div>
+                        <div className="progress" style={{width: `${progressWidth}%`}}></div>
                     </div>
                 </div>
                 <div className="music_controls">

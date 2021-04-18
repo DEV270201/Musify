@@ -1,0 +1,27 @@
+.info{
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    /* background-color: blueviolet; */
+}
+
+.info_head{
+    padding: 2px;
+    background-color: orangered;
+    border-radius: 10px;
+}
+
+.info_head1{
+    color: white;
+    font-weight: 300;
+    font-style: italic;
+    text-align: center;
+}
+
+.add_info1{
+    font-weight: 400;
+}
+
+.add_info2{
+    text-decoration: none;
+}

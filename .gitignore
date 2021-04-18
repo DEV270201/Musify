@@ -3,6 +3,8 @@
 
 #files
 /src/Music
+/src/Address
+/src/images/location.png
 
 # dependencies
 /node_modules

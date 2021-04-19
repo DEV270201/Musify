@@ -8,3 +8,23 @@
     letter-spacing: 2px;
 }
 
+.search_outer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.musicsearch{
+    outline: none;
+    background-color: transparent;
+    border: none;
+    margin: 10px auto;
+    height: 20px;
+    width: 300px;
+    padding: 10px;
+    /* border-bottom: 1px solid red; */
+    font-size: 15px;
+}
+
+
+/* .musicsearch */

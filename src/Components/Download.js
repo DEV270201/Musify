@@ -2,16 +2,13 @@ import React,{useState,useContext} from "react";
 import "../Css/Download.css";
 import Data from "../musicData/Data";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
-import DownloadDetails from "./DownloadDetails";
+import { faDownload} from '@fortawesome/free-solid-svg-icons';
+import {faFrownOpen} from "@fortawesome/free-regular-svg-icons";
 import {ThemeContext} from "../Context/ThemeContextProvider";
+import ShowDownloadDetails from "./ShowDownloadDetails";
 // import {CurrentSongContext} from "../Context/CurrentSongProvider";
 
 const Download = ()=>{
-    // const {play_new_song} = useContext(CurrentSongContext);
-    // useEffect(()=>{
-    //    play_new_song(Data[0]);
-    // },[]);
     const {theme} = useContext(ThemeContext);
     const[musicSearch,setMusicSearch] = useState("");
 
@@ -19,6 +16,11 @@ const Download = ()=>{
     const SearchMusic = (event)=>{
         setMusicSearch(event.target.value);
     }
+
+    const results = !musicSearch ? Data 
+                                 : Data.filter((song,index)=>{    //if search is empty display all records else display the records that satisfy the condition
+               return song.name.toLowerCase().includes(musicSearch.toLowerCase());
+           });
 
     return(
        <>
@@ -30,15 +32,15 @@ const Download = ()=>{
          <input type="text" className="music musicsearch" onChange={SearchMusic} value={musicSearch} name={musicSearch} placeholder="Search Songs..." style={{borderBottom : `2px solid ${theme.color}`}}/>
        </div>
        {
-           Data.filter((song,index)=>{                                           //first we are filtering out the records that the user wants and then we are mapping it to display.
-               return song.name.toLowerCase().includes(musicSearch.toLowerCase());
-           }).map((song,index)=>{
-            return(
-                <div key={index}>
-                   <DownloadDetails song={song} index={index} />
-                </div>
-            );  
-           })
+        results.length ? (
+            <>
+              <ShowDownloadDetails results = {results} />
+            </>
+        ) : (
+            <>
+            <h3 className="download_msg" style={{color : `${theme.color}`}}><FontAwesomeIcon icon={faFrownOpen}/>     Sorry , song not found!!</h3>
+            </>
+        )
        }
        </>
    );

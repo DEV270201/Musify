@@ -8,7 +8,7 @@ import { ThemeContext } from "../Context/ThemeContextProvider";
 const Navbar = ()=>{
     const [menu,setMenu] = useState(false);
     const [color,setColor] = useState(false);
-    const {theme_status , changeTheme} = useContext(ThemeContext);
+    const {theme,dispatch} = useContext(ThemeContext);
 
     useEffect(()=>{
 
@@ -29,10 +29,10 @@ const Navbar = ()=>{
     },[]);
 
     const myfunc = ()=>{
-        if(theme_status === "light"){
-            changeTheme("dark");
+        if(theme.theme === "light"){
+            dispatch({type : "DARK THEME"})
         }else{
-            changeTheme("light");
+            dispatch({type : "Light THEME"})
         }
     }
 

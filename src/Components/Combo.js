@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "../Css/Combo.css";
 import Download from "./Download";
 import MusicPlayer from "./MusicPlayer";
@@ -6,10 +6,7 @@ import {ThemeContext} from "../Context/ThemeContextProvider";
 
 
 const Combo = ()=>{
-  const {theme_status,theme} = useContext(ThemeContext);
-  useEffect(()=>{
-    console.log(theme_status);
-  })
+  const {theme} = useContext(ThemeContext);
   return (
       <>
       <div className="outer_combo">

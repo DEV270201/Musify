@@ -30,9 +30,9 @@ const Navbar = ()=>{
 
     const myfunc = ()=>{
         if(theme.theme === "light"){
-            dispatch({type : "DARK THEME"})
+            dispatch({type : "DARK_THEME"})
         }else{
-            dispatch({type : "Light THEME"})
+            dispatch({type : "LIGHT_THEME"})
         }
     }
 

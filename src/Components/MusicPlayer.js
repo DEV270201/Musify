@@ -18,7 +18,7 @@ const MusicPlayer = ()=>{
     const[seconds,setSeconds] = useState("00");
     const[progressWidth,setProgressWidth] = useState(0); //for chaning the width of the progress bar
     const music = useRef(null);
-    const {currentSong , play_new_song} = useContext(CurrentSongContext);
+    const {currentSong , dispatch1} = useContext(CurrentSongContext);
     const {theme} = useContext(ThemeContext);
 
     
@@ -100,7 +100,7 @@ useEffect(()=>{
     },[replay]);
 
     useEffect(()=>{
-        firstTimeRender.current = false;
+        firstTimeRender.current = false;   //used because whenever for the first time the page is loaded then the song is not liked/put on repeat by default
         // console.log(music.current.duration);
         // console.log(Music);
       },[]);
@@ -143,15 +143,18 @@ useEffect(()=>{
 
      //changing the song
     const nextMusic = ()=>{
-      play_new_song(Data[(currentSong.index + 1) % Data.length],(currentSong.index + 1) % Data.length);
+    //   dispatch({type : "CHANGE_MUSIC" , payload : {index : ((currentSong.index + 1) % Data.length)}});
+    console.log(currentSong.index + 1);
+    dispatch1({type: "CHANGE_MUSIC" , payload : {index : (currentSong.index + 1)%Data.length}});
+
     }
 
     //changing the song
     const prevMusic = ()=>{
         if(currentSong.index === 0){
-           play_new_song(Data[Data.length-1],Data.length-1);
+            dispatch1({type : "CHANGE_MUSIC" , payload : {index : Data.length-1}});
         }else{
-            play_new_song(Data[currentSong.index-1],currentSong.index - 1);
+            dispatch1({type : "CHANGE_MUSIC" , payload : {index : currentSong.index - 1}});
         }
     }
 

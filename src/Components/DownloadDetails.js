@@ -5,7 +5,7 @@ import {ThemeContext} from "../Context/ThemeContextProvider";
 
 const DownloadDetails = ({song,index})=>{
     
-    const {currentSong,play_new_song} = useContext(CurrentSongContext);
+    const {currentSong,dispatch} = useContext(CurrentSongContext);
     const {theme} = useContext(ThemeContext);
     const [hover,addHover] = useState(false);
     const normal = {
@@ -21,15 +21,8 @@ const DownloadDetails = ({song,index})=>{
     }
 
     const playNewSong = ()=>{
-    //    console.log("calling the context method");
-       play_new_song(song,index);
+          dispatch({type: "CHANGE_MUSIC" , payload : {index : index}});
     }
-
-    // useEffect(()=>{
-    //     console.log("Color : " , theme.color);
-    //     console.log("BAckgroundColor : " , theme.backgroundColor);
-
-    // },[theme]);
 
     const apply_hover = ()=>{
         addHover(!hover);
@@ -38,7 +31,6 @@ const DownloadDetails = ({song,index})=>{
 
     const remove_hover = ()=>{
         addHover(!hover);
-        // console.log("removed");
     }
 
    return(
@@ -53,7 +45,7 @@ const DownloadDetails = ({song,index})=>{
                 <h5 className="header_info_2">{song.artist}</h5>
               </div>
               <div className="buttons">
-                 <button className="start_btn" onClick={playNewSong} onMouseEnter={apply_hover} onMouseLeave={remove_hover} style={hover ? effect : normal}>{song === currentSong ? "Now Playing" : "Play"}</button>
+                 <button className="start_btn" onClick={playNewSong} onMouseEnter={apply_hover} onMouseLeave={remove_hover} style={hover ? effect : normal}>{song.name === currentSong.name ? "Now Playing" : "Play"}</button>
               </div>
           </div>
        </div>

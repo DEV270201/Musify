@@ -12,12 +12,15 @@
     width: 30%;
     overflow: hidden;
     margin: 5px;
+    position: relative;
+    height: 100px;
+
 }
 
 .img_class img{
-    height: 100px;
-    width: 120px;
-    position: relative;
+    height: 100%;
+    width: 100%;
+    position: absolute;
     border-radius: 10px;
     transition: .5s ease-in-out;
 }

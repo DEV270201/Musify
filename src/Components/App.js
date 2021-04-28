@@ -14,16 +14,13 @@ const App = ()=>{
     return(
         <>
         <Navbar />
-        {/* <CurrentSongProvider> */}
         <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/online" component={Online} />
             <Route path="/favourite" component={Favourite} />
-            {/* <Route path="/music" component={MusicPlayer} /> */}
             <Route path="/download" component={Combo} />
             <Redirect to="/" />
         </Switch>
-        {/* </CurrentSongProvider> */}
         <Copyright />
         </>
     );

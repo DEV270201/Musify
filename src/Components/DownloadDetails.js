@@ -5,7 +5,7 @@ import {ThemeContext} from "../Context/ThemeContextProvider";
 
 const DownloadDetails = ({song,index})=>{
     
-    const {currentSong,dispatch} = useContext(CurrentSongContext);
+    const {currentSong,dispatch1} = useContext(CurrentSongContext);
     const {theme} = useContext(ThemeContext);
     const [hover,addHover] = useState(false);
     const normal = {
@@ -21,7 +21,7 @@ const DownloadDetails = ({song,index})=>{
     }
 
     const playNewSong = ()=>{
-          dispatch({type: "CHANGE_MUSIC" , payload : {index : index}});
+          dispatch1({type: "CHANGE_MUSIC" , payload : {index : index}});
     }
 
     const apply_hover = ()=>{

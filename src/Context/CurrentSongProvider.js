@@ -5,8 +5,10 @@ import Data from "../musicData/Data";
 export const CurrentSongContext = createContext("");
 
 export const CurrentSongProvider = (props)=>{
+
    const[currentSong,dispatch1] = useReducer(CurrentSongReducer,Data[0],()=>{
-      Data[0].index = 0;
+      //assigning the index to the first song because it will be rendered across the component for the very first time
+      Data[0]['index'] = 0;
       return Data[0];
    });
 

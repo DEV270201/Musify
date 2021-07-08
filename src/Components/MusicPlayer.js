@@ -144,7 +144,6 @@ useEffect(()=>{
      //changing the song
     const nextMusic = ()=>{
     //   dispatch({type : "CHANGE_MUSIC" , payload : {index : ((currentSong.index + 1) % Data.length)}});
-    console.log(currentSong.index + 1);
     dispatch1({type: "CHANGE_MUSIC" , payload : {index : (currentSong.index + 1)%Data.length}});
 
     }

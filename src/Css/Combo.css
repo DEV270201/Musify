@@ -1,7 +1,7 @@
 .outer_combo{
     width: 100vw;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     overflow-x: hidden;
     /* align-items: center; */
 }
@@ -9,13 +9,12 @@
 .download_combo{
     width: 25%;
     height: 95vh;
-    overflow : auto;
+    overflow-y : scroll;
     /* background-color: bisque; */
 }
 
 .music_combo{
     width: 75%;
-    background-color: black;
 }
 
 

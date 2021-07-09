@@ -11,7 +11,7 @@ const Combo = ()=>{
       <>
       <div className="outer_combo">
       {/* <CurrentSongProvider> */}
-          <div className="download_combo" style={{backgroundColor : `${theme.backgroundColor}`, color : `${theme.color}` , borderRight : `2px solid ${theme.color}`}}>
+          <div className={`download_combo ${theme.theme === "light" ? 'light' : 'dark' }`} style={{backgroundColor : `${theme.backgroundColor}`, color : `${theme.color}`}}>
              <Download />
           </div>
           <div className="music_combo">

@@ -14,8 +14,10 @@ const MusicPlayer = ()=>{
     const[liked,setLike] = useState(false);     //to check whether the video is liked or not
     const[replay,setReplay] = useState(false);  //to check whether the song is on repeat or not
     const firstTimeRender = useRef(true);
-    const[minute,setMinute] = useState("00");
-    const[seconds,setSeconds] = useState("00");
+    const[songTime,setSongTime] = useState({
+        mins : "00",
+        secs : "00",
+    });
     const[progressWidth,setProgressWidth] = useState(0); //for chaning the width of the progress bar
     const music = useRef(null);
     const {currentSong , dispatch1} = useContext(CurrentSongContext);
@@ -29,11 +31,11 @@ const MusicPlayer = ()=>{
 
 useEffect(()=>{
     music.current.src = currentSong.audio;
-    // setDuration(document.querySelector(".music").duration);
-    // setPlay(true);
     console.log("first");
-    // console.log("current song" , currentSong);
-    // console.log(music.current.currentSrc);
+    console.log(music.current);
+    console.log(music.current.volume);
+    console.log(music.current.currentTime);
+
     // return(
     //     ()=>{
     //         console.log("returned");
@@ -50,26 +52,33 @@ useEffect(()=>{
             setTime(event.target.currentTime);
             setProgressWidth(Math.floor(event.target.currentTime/event.target.duration * 100));
         }
+ 
+        const ended = ()=>{
+
+            //   play_new_song(Data[(currentSong.index + 1) % Data.length],(currentSong.index + 1) % Data.length); 
+            music.current.play();
+        }
+
         if(isPlaying){
         console.log("second");
         music.current.play();
         music.current.addEventListener("timeupdate",update_time);
-        music.current.addEventListener("ended", ()=>{
-            //   play_new_song(Data[(currentSong.index + 1) % Data.length],(currentSong.index + 1) % Data.length); 
-                 music.current.play();
-            });  
+        music.current.addEventListener("ended", ended);  
         // console.log(currentSong.audio);
         var music_tracker = music.current;   //for storing the refernce of music.current  
         }
         else{
+        //as soon as you press the pause button ,  the state is changed and the component is upmounted and mounted again
         console.log("paused");
         music.current.pause();
         }
-        // console.log(music.current);
+        
+        // for cleaning purposes
         return(()=>{
-            // console.log("first");
+            // console.log(music_tracker);
         if(music_tracker){
             music_tracker.removeEventListener("timeupdate",update_time);
+            music_tracker.removeEventListener("ended",ended);
         }
         });
     },[isPlaying]);
@@ -79,11 +88,13 @@ useEffect(()=>{
         let sec = Math.floor(current_time) % 60;
         let min = Math.floor(Math.floor(current_time) / 60);
         // console.log(sec + "   " + min);
-        let computedsec = String(sec).length === 1 ? `0${sec}` : `${sec}`;
+        let computedSec = String(sec).length === 1 ? `0${sec}` : `${sec}`;
         let computedMin = String(min).length === 1 ? `0${min}` : `${min}`;
 
-        setSeconds(computedsec);
-        setMinute(computedMin);
+        setSongTime({
+            mins : computedMin,
+            secs : computedSec,
+        })
 
     },[current_time]);
 
@@ -100,10 +111,11 @@ useEffect(()=>{
     },[replay]);
 
     useEffect(()=>{
-        firstTimeRender.current = false;   //used because whenever for the first time the page is loaded then the song is not liked/put on repeat by default
-        // console.log(music.current.duration);
-        // console.log(Music);
-      },[]);
+
+       //used because whenever for the first time the page is loaded then the song is not liked/put on repeat by default
+       firstTimeRender.current = false;
+
+    },[]);
 
     const myfunc = ()=>{
       setPlay(!isPlaying);
@@ -171,7 +183,7 @@ useEffect(()=>{
                  </audio>
                 <div className="progressbar">
                     <div className="timer">
-                        <h5 className="start" style={{color : `${theme.color}`}}>{minute} : {seconds}</h5>
+                        <h5 className="start" style={{color : `${theme.color}`}}>{songTime.mins} : {songTime.secs}</h5>
                         <h5 className="end" style={{color : `${theme.color}`}}>{currentSong.end}</h5>
                     </div>
                     <div className="progress_outer" onClick={change_time} style={{background : `${theme.backgroundColor}`}}>

@@ -61,7 +61,7 @@
     border-radius: 50%;
     margin-top: 30px;
     margin-bottom: 30px;
-    filter: drop-shadow(2px 3px 3px #222);
+    filter: drop-shadow(2px 3px 3px green);
 }
 
 .music_controls{
@@ -165,14 +165,6 @@
     margin: 10px 0px;
 }
 
-.like:hover,.repeat:hover{
+.like:hover,.repeat:hover,.random:hover{
     cursor: pointer;
-}
-
-.like.addeffect{
-    color: #4cd137;
-}
-
-.repeat.addrepeat{
-    color: #4cd137;
 }

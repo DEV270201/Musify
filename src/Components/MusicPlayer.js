@@ -1,6 +1,6 @@
 import React,{useState,useEffect,useRef,useContext} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay,faBackward,faForward,faPause,faMusic,faRedo} from '@fortawesome/free-solid-svg-icons';
+import { faPlay,faBackward,faForward,faPause,faMusic,faRedo,faRandom } from '@fortawesome/free-solid-svg-icons';
 import {faHeart} from "@fortawesome/free-regular-svg-icons";
 import "../Css/musicPlayer.css";
 import {CurrentSongContext} from "../Context/CurrentSongProvider";
@@ -13,6 +13,7 @@ const MusicPlayer = ()=>{
     const[current_time,setTime] = useState(0);   // to trace the current time of the music
     const[liked,setLike] = useState(false);     //to check whether the video is liked or not
     const[replay,setReplay] = useState(false);  //to check whether the song is on repeat or not
+    const [random,setRandom] = useState(false);
     const firstTimeRender = useRef(true);
     const[songTime,setSongTime] = useState({
         mins : "00",
@@ -56,8 +57,17 @@ useEffect(()=>{
  
         const ended = ()=>{
 
-            //   play_new_song(Data[(currentSong.index + 1) % Data.length],(currentSong.index + 1) % Data.length); 
-            music.current.play();
+        console.log("music over");    
+        
+        //if the shuffling button is on then we will shuffle the music by generating random numbers    
+            if(random){
+               dispatch1({type : "CHANGE_MUSIC" , payload : {id : Math.floor(Math.random() * 100) % Data.length}}); 
+            }else if(replay){
+                music.current.play();
+            }else{
+                dispatch1({type: "CHANGE_MUSIC" , payload : {id : (currentSong.id + 1)%Data.length}});
+                // nextMusic();
+            }
         }
 
         if(isPlaying){
@@ -82,7 +92,7 @@ useEffect(()=>{
             music_tracker.removeEventListener("ended",ended);
         }
         });
-    },[isPlaying]);
+    },[isPlaying,random,replay]);
 
     //Music Timer
     useEffect(()=>{
@@ -137,6 +147,13 @@ useEffect(()=>{
         setReplay(!replay);
     }
 
+    const update_info_random = ()=>{
+        if(replay){
+            setPlay(false);
+        }
+        setRandom(!random);
+    }
+
     const add_to_fav = ()=>{
         console.log("added to the fav");
         // console.log(Data[1].isLiked);
@@ -148,7 +165,10 @@ useEffect(()=>{
     }
 
     const add_to_repeat = ()=>{
-        console.log("added to the repeat");
+        //if the shuffle is on and the user is putting the song on repeat , so turn off the shuffle
+        if(random){
+            setRandom(false);
+        }
     }
      
     const remove_from_repeat = ()=>{
@@ -200,8 +220,9 @@ useEffect(()=>{
                     <div className="next" onClick={nextMusic} style={{color : `${theme.color}`}}><FontAwesomeIcon title="Next" icon={faForward}/></div>
                 </div>
                 <div className="icons">
-                <div className={`repeat ${replay ? "addrepeat" : "" }`} style={{color : `${theme.color}`}} onClick={()=> update_info_repeat()} ><FontAwesomeIcon title="Repeat" icon={faRedo}/></div>
-                <div className={`like ${liked ? "addeffect" : "" }`} style={{color : `${theme.color}`}} onClick={()=> update_info_like()}><FontAwesomeIcon title="Like" icon={faHeart}/></div>
+                <div className="random"  style={{color : `${random ? '#4cd137' : theme.color}`}}  onClick={update_info_random}><FontAwesomeIcon icon={faRandom} title="Shuffle" /></div>
+                <div className="repeat" style={{color : `${replay ? '#4cd137' : theme.color}`}} onClick={update_info_repeat} ><FontAwesomeIcon title="Repeat" icon={faRedo}/></div>
+                <div className="like"  style={{color : `${liked ? '#4cd137' : theme.color}`}} onClick={update_info_like}><FontAwesomeIcon title="Like" icon={faHeart}/></div>
                 </div>
             </div>
         </div>

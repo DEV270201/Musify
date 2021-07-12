@@ -22,13 +22,9 @@ const MusicPlayer = ()=>{
     const music = useRef(null);
     const {currentSong , dispatch1} = useContext(CurrentSongContext);
     const {theme} = useContext(ThemeContext);
-
     
-    // let audio = new Audio("Memories.mp3");
+
 //react allows us to add multiple useEffect hooks to perform different tasks.
-
-
-
 useEffect(()=>{
     music.current.src = currentSong.audio;
     console.log("first");
@@ -36,18 +32,23 @@ useEffect(()=>{
     console.log(music.current.volume);
     console.log(music.current.currentTime);
 
-    // return(
-    //     ()=>{
-    //         console.log("returned");
-    //         setPlay(false);
-    //     }
-    // );
+    //we can make use of useReducer instead of calling different useState functions
+    setProgressWidth(0);
+    setSongTime({
+        mins : '00',
+        secs : '00'
+    });
+
+//we will not execute this code on the first render
+    if(!firstTimeRender.current){
+        setPlay(true);
+        music.current.play();
+    }   
 },[currentSong]);
 
     useEffect(()=>{
 
         const update_time = (event)=>{
-       
             // console.log(progressWidth);
             setTime(event.target.currentTime);
             setProgressWidth(Math.floor(event.target.currentTime/event.target.duration * 100));
@@ -75,7 +76,7 @@ useEffect(()=>{
         
         // for cleaning purposes
         return(()=>{
-            // console.log(music_tracker);
+            console.log("unmounted");
         if(music_tracker){
             music_tracker.removeEventListener("timeupdate",update_time);
             music_tracker.removeEventListener("ended",ended);
@@ -114,6 +115,7 @@ useEffect(()=>{
 
        //used because whenever for the first time the page is loaded then the song is not liked/put on repeat by default
        firstTimeRender.current = false;
+       console.log("mounted again");
 
     },[]);
 
@@ -122,8 +124,8 @@ useEffect(()=>{
     }
 
     const change_time = (event)=>{
-        // console.log(event.target.clientWidth);
-        // console.log(event.nativeEvent.offsetX);
+        console.log(event.target.clientWidth);
+        console.log(event.nativeEvent);
         music.current.currentTime = event.nativeEvent.offsetX / event.target.clientWidth * music.current.duration;
     }
 
@@ -179,7 +181,7 @@ useEffect(()=>{
                 </div>
                 <img className={isPlaying ? "myimg anime" : "myimg"} src={currentSong.src} alt="song cover page" />
                 <audio className="music" ref={music}>
-                    <source src={currentSong.audio} type="audio/mpeg"/>
+                    <source src={currentSong.audio} type="audio/mp3"/>
                  </audio>
                 <div className="progressbar">
                     <div className="timer">

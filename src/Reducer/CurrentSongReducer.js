@@ -1,5 +1,5 @@
 //CURRENTSONG REDUCER
-import Data from "../musicData/Data";
+import Data from "../MusicData/Data";
 
 const CurrentSongReducer = (state,action)=>{
   switch(action.type){

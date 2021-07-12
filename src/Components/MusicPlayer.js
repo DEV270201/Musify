@@ -5,7 +5,7 @@ import {faHeart} from "@fortawesome/free-regular-svg-icons";
 import "../Css/musicPlayer.css";
 import {CurrentSongContext} from "../Context/CurrentSongProvider";
 import {ThemeContext} from "../Context/ThemeContextProvider";
-import Data from "../musicData/Data";
+import Data from "../MusicData/Data";
 
 
 const MusicPlayer = ()=>{

@@ -1,6 +1,6 @@
 import React,{useState,useContext} from "react";
 import "../Css/Download.css";
-import Data from "../musicData/Data";
+import Data from "../MusicData/Data";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload} from '@fortawesome/free-solid-svg-icons';
 import {faFrownOpen} from "@fortawesome/free-regular-svg-icons";

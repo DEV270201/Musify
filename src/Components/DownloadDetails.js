@@ -3,7 +3,7 @@ import "../Css/DownloadDetails.css";
 import {CurrentSongContext} from "../Context/CurrentSongProvider";
 import {ThemeContext} from "../Context/ThemeContextProvider";
 
-const DownloadDetails = ({song,index})=>{
+const DownloadDetails = ({song})=>{
     
     const {currentSong,dispatch1} = useContext(CurrentSongContext);
     const {theme} = useContext(ThemeContext);
@@ -28,10 +28,10 @@ const DownloadDetails = ({song,index})=>{
 
     const playNewSong = ()=>{
     //checking if the user presses on the play button for the music that is already being played , then we will not fire the dispatch function          
-              if(currentSong.index  === index){
+              if(currentSong.id  === song.id){
                   console.log("yes");
               }else{
-                  dispatch1({type: "CHANGE_MUSIC" , payload : {index : index}});
+                  dispatch1({type: "CHANGE_MUSIC" , payload : {id : song.id}});
               }
     }
 

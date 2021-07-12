@@ -5,10 +5,10 @@ const ShowDownloadDetails = ({results})=>{
   return(
       <>
       {
-        results.map((song,index)=>{
+        results.map((song)=>{
             return(
-                <div key={index}>
-                   <DownloadDetails song={song} index={index} />
+                <div key={song.id}>
+                   <DownloadDetails song={song} />
                 </div>
             );  
            })

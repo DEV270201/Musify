@@ -156,16 +156,16 @@ useEffect(()=>{
      //changing the song
     const nextMusic = ()=>{
     //   dispatch({type : "CHANGE_MUSIC" , payload : {index : ((currentSong.index + 1) % Data.length)}});
-    dispatch1({type: "CHANGE_MUSIC" , payload : {index : (currentSong.index + 1)%Data.length}});
+    dispatch1({type: "CHANGE_MUSIC" , payload : {id : (currentSong.id + 1)%Data.length}});
 
     }
 
     //changing the song
     const prevMusic = ()=>{
-        if(currentSong.index === 0){
-            dispatch1({type : "CHANGE_MUSIC" , payload : {index : Data.length-1}});
+        if(currentSong.id === 0){
+            dispatch1({type : "CHANGE_MUSIC" , payload : {id : Data.length-1}});
         }else{
-            dispatch1({type : "CHANGE_MUSIC" , payload : {index : currentSong.index - 1}});
+            dispatch1({type : "CHANGE_MUSIC" , payload : {id : currentSong.id - 1}});
         }
     }
 

@@ -1,4 +1,4 @@
-import React,{useContext, useState , useEffect} from "react";
+import React,{useContext, useState } from "react";
 import "../Css/DownloadDetails.css";
 import {CurrentSongContext} from "../Context/CurrentSongProvider";
 import {ThemeContext} from "../Context/ThemeContextProvider";
@@ -9,10 +9,10 @@ const DownloadDetails = ({song})=>{
     const {theme} = useContext(ThemeContext);
     const [hover,addHover] = useState(false);
 
-    useEffect(()=>{
-    //   console.log("current song : " + currentSong.index);
-         console.log(hover);
-    });
+    // useEffect(()=>{
+    // //   console.log("current song : " + currentSong.index);
+    //      console.log(hover);
+    // });
 
     const normal = {
         backgroundColor : `${theme.backgroundColor}`,

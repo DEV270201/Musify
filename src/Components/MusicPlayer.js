@@ -28,10 +28,12 @@ const MusicPlayer = ()=>{
 //react allows us to add multiple useEffect hooks to perform different tasks.
 useEffect(()=>{
     music.current.src = currentSong.audio;
-    console.log("first");
-    console.log(music.current);
-    console.log(music.current.volume);
-    console.log(music.current.currentTime);
+    console.log("current song : " + currentSong.id + "  " + currentSong.name);
+
+    // console.log("first");
+    // console.log(music.current);
+    // console.log(music.current.volume);
+    // console.log(music.current.currentTime);
 
     //we can make use of useReducer instead of calling different useState functions
     setProgressWidth(0);
@@ -66,13 +68,12 @@ useEffect(()=>{
                 music.current.play();
             }else{
                 // dispatch1({type: "CHANGE_MUSIC" , payload : {id : (currentSong.id + 1)%Data.length}});
-                console.log("current song : " + currentSong);
+                console.log("current song : " + currentSong.id + "  " + currentSong.name);
                 dispatch1({type: "CHANGE_MUSIC" , payload : {id : (currentSong.id + 1)%Data.length}});
             }
         }
 
         if(isPlaying){
-        console.log("second");
         music.current.play();
         music.current.addEventListener("timeupdate",update_time);
         music.current.addEventListener("ended", ended);  
@@ -81,13 +82,11 @@ useEffect(()=>{
         }
         else{
         //as soon as you press the pause button ,  the state is changed and the component is upmounted and mounted again
-        console.log("paused");
         music.current.pause();
         }
         
         // for cleaning purposes
         return(()=>{
-            console.log("unmounted");
         if(music_tracker){
             music_tracker.removeEventListener("timeupdate",update_time);
             music_tracker.removeEventListener("ended",ended);
@@ -138,8 +137,6 @@ useEffect(()=>{
 
        //used because whenever for the first time the page is loaded then the song is not liked/put on repeat by default
        firstTimeRender.current = false;
-       console.log("mounted again");
-
     },[]);
 
     const myfunc = ()=>{
@@ -147,8 +144,6 @@ useEffect(()=>{
     }
 
     const change_time = (event)=>{
-        console.log(event.target.clientWidth);
-        console.log(event.nativeEvent);
         music.current.currentTime = event.nativeEvent.offsetX / event.target.clientWidth * music.current.duration;
     }
 

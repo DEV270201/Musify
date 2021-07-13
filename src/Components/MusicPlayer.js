@@ -65,8 +65,9 @@ useEffect(()=>{
             }else if(replay){
                 music.current.play();
             }else{
+                // dispatch1({type: "CHANGE_MUSIC" , payload : {id : (currentSong.id + 1)%Data.length}});
+                console.log("current song : " + currentSong);
                 dispatch1({type: "CHANGE_MUSIC" , payload : {id : (currentSong.id + 1)%Data.length}});
-                // nextMusic();
             }
         }
 
@@ -117,6 +118,18 @@ useEffect(()=>{
 
     //repeat/notRepeat
     useEffect(()=>{
+
+        const add_to_repeat = ()=>{
+            //if the shuffle is on and the user is putting the song on repeat , so turn off the shuffle
+            if(random){
+                setRandom(false);
+            }
+        }
+         
+        const remove_from_repeat = ()=>{
+            console.log("removed from  the repeat");
+        }
+
         if(!firstTimeRender.current)
         replay ? add_to_repeat() : remove_from_repeat();
     },[replay]);
@@ -149,7 +162,7 @@ useEffect(()=>{
 
     const update_info_random = ()=>{
         if(replay){
-            setPlay(false);
+            setReplay(false);
         }
         setRandom(!random);
     }
@@ -164,19 +177,10 @@ useEffect(()=>{
         console.log("removed from  the fav");
     }
 
-    const add_to_repeat = ()=>{
-        //if the shuffle is on and the user is putting the song on repeat , so turn off the shuffle
-        if(random){
-            setRandom(false);
-        }
-    }
-     
-    const remove_from_repeat = ()=>{
-        console.log("removed from  the repeat");
-    }
 
      //changing the song
     const nextMusic = ()=>{
+    console.log("function called");
     //   dispatch({type : "CHANGE_MUSIC" , payload : {index : ((currentSong.index + 1) % Data.length)}});
     dispatch1({type: "CHANGE_MUSIC" , payload : {id : (currentSong.id + 1)%Data.length}});
 

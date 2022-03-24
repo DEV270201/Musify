@@ -12,7 +12,7 @@
     width: 30%;
     overflow: hidden;
     margin: 5px;
-    position: relative;
+    /* position: relative; */
     height: 100px;
 
 }
@@ -20,7 +20,7 @@
 .img_class img{
     height: 100%;
     width: 100%;
-    position: absolute;
+    /* position: absolute; */
     border-radius: 10px;
     transition: .5s ease-in-out;
 }
@@ -83,6 +83,27 @@
     cursor: pointer;
 }
 
+.light{
+    background-color : #D1E8E2;
+    color : black;
+    border: 1px solid #000;
+}
+
+.light:hover{
+    background-color : black;
+    color : #D1E8E2;
+}
+
+.dark{
+    background-color : #000;
+    color : dodgerblue;
+    border: 1px solid dodgerblue;
+}
+
+.dark:hover{
+    background-color : dodgerblue;
+    color : #000;
+}
 
 @media(max-width: 468px){
     .details_outer{

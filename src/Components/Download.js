@@ -32,7 +32,7 @@ const Download = ()=>{
          <input type="text" className="music musicsearch" onChange={SearchMusic} value={musicSearch} name={musicSearch} placeholder="Search Songs..." style={{borderBottom : `2px solid ${theme.color}`}}/>
        </div>
        {
-        results.length ? (
+        results.length !==0 ? (
             <>
               <ShowDownloadDetails results = {results} />
             </>

@@ -12,6 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  /* background-color: azure; */
 }
 
 .musicsearch{
@@ -19,7 +20,7 @@
     background-color: transparent;
     border: none;
     height: 20px;
-    width: 300px;
+    width: 75%;
     padding: 10px;
     /* border-bottom: 1px solid red; */
     font-size: 15px;

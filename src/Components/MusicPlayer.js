@@ -11,8 +11,6 @@ import Data from "../MusicData/Data";
 // otherwise it wont work
 
 const MusicPlayer = () => {
-    const [isPlaying, setPlay] = useState(true);  //to check whether the song is playing or not
-    const [current_time, setTime] = useState(0);   // to trace the current time of the music
     const [liked, setLike] = useState(false);     //to check whether the video is liked or not
     const firstTimeRender = useRef(true);
     const [songTime, setSongTime] = useState({
@@ -25,12 +23,21 @@ const MusicPlayer = () => {
     const { theme } = useContext(ThemeContext);
     const randomRef = useRef(null);
     const replayRef = useRef(null);
+    const musicPlay = useRef(false);
     // const likeRef = useRef(null);
 
     //react allows us to add multiple useEffect hooks to perform different tasks.
     const update_time = (event) => {
-        // console.log(progressWidth);
-        setTime(event.target.currentTime);
+        
+        //after the curent time is obtained from the audio we update the songtime to convey it to the user.
+        let sec = Math.floor(event.target.currentTime) % 60;
+        let min = Math.floor(Math.floor(event.target.currentTime) / 60);
+
+        setSongTime({
+            mins: String(min).length === 1 ? `0${min}` : `${min}`,
+            secs: String(sec).length === 1 ? `0${sec}` : `${sec}`,
+        });
+
         setProgressWidth(Math.floor(event.target.currentTime / event.target.duration * 100));
     }
 
@@ -47,45 +54,22 @@ const MusicPlayer = () => {
 
     useEffect(() => {
         music.current.src = currentSong.audio;
-        //if isplaying is true then only play the music
-        if(isPlaying)
-         music.current.play();
+        //when the new song load just start  playing the song
+        musicPlay.current = true;
+        music.current.play();
         //for each and every song we will add the event listeners for proper functioning
         music.current.addEventListener("timeupdate", update_time);
         music.current.addEventListener("ended", ended);
-        var music_tracker = music.current;   //for storing the refernce of music.current  
 
         // for cleaning purposes
         return (() => {
-            if (music_tracker) {
-                music_tracker.removeEventListener("timeupdate", update_time);
-                music_tracker.removeEventListener("ended", ended);
+            if (music.current) {
+                music.current.removeEventListener("timeupdate", update_time);
+                music.current.removeEventListener("ended", ended);
             }
         });
 
     }, [currentSong]);
-
-    //for playing and pausing the music
-    useEffect(() => {
-        if (isPlaying){
-            music.current.play(); 
-        }
-        else {
-            music.current.pause();
-        }
-    }, [isPlaying]);
-
-    //Music Timer
-    useEffect(() => {
-        let sec = Math.floor(current_time) % 60;
-        let min = Math.floor(Math.floor(current_time) / 60);
-
-        setSongTime({
-            mins: String(min).length === 1 ? `0${min}` : `${min}`,
-            secs: String(sec).length === 1 ? `0${sec}` : `${sec}`,
-        })
-
-    }, [current_time]);
 
     //Liked/Disliked
     useEffect(() => {
@@ -95,13 +79,17 @@ const MusicPlayer = () => {
  
 
     useEffect(() => {
-
         //used because whenever for the first time the page is loaded then the song is not liked/put on repeat by default
         firstTimeRender.current = false;
     }, []);
 
     const myfunc = () => {
-        setPlay(!isPlaying);
+        musicPlay.current = !musicPlay.current
+        if(musicPlay.current){
+            music.current.play();
+        }else{
+            music.current.pause();
+        }
     }
 
     const change_time = (event) => {
@@ -136,8 +124,6 @@ const MusicPlayer = () => {
 
     const add_to_fav = () => {
         console.log("added to the fav");
-        // console.log(Data[1].isLiked);
-        // Data[1].isLiked = true;
     }
 
     const remove_from_fav = () => {
@@ -177,7 +163,7 @@ const MusicPlayer = () => {
                         <h2 className="song" style={{ color: `${theme.color}` }}><span id="a1"><FontAwesomeIcon icon={faMusic} /></span><span id="a2">{currentSong.name}</span></h2>
                         <h4 className="artist" style={{ color: `${theme.color}` }}>{currentSong.artist}</h4>
                     </div>
-                    <img className={isPlaying ? "myimg anime" : "myimg"} src={currentSong.src} alt="song cover page" />
+                    <img className={musicPlay.current ? "myimg anime" : "myimg"} src={currentSong.src} alt="song cover page" />
                     <audio className="music" ref={music}>
                         <source src={currentSong.audio} type="audio/mp3" />
                     </audio>
@@ -193,7 +179,7 @@ const MusicPlayer = () => {
                     <div className="music_controls">
                         <div className="prev" onClick={prevMusic} style={{ color: `${theme.color}` }}><FontAwesomeIcon title="Previous" icon={faBackward} /></div>
                         <div className="play_outer" style={{ color: `${theme.color}`, backgroundColor: `${theme.backgroundColor}` }}>
-                            <div className="play" onClick={myfunc}><FontAwesomeIcon title={`${isPlaying ? 'Playing' : 'Paused'}`} icon={isPlaying ? faPause : faPlay} /></div>
+                            <div className="play" onClick={myfunc}><FontAwesomeIcon title={`${musicPlay.current ? 'Playing' : 'Paused'}`} icon={musicPlay.current ? faPause : faPlay} /></div>
                         </div>
                         <div className="next" onClick={nextMusic} style={{ color: `${theme.color}` }}><FontAwesomeIcon title="Next" icon={faForward} /></div>
                     </div>

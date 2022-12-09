@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faBackward, faForward, faPause, faMusic, faRedo, faRandom} from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faBackward, faForward, faPause, faMusic, faRedo, faRandom } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import "../Css/musicPlayer.css";
 import { CurrentSongContext } from "../Context/CurrentSongProvider";
@@ -28,7 +28,7 @@ const MusicPlayer = () => {
 
     //react allows us to add multiple useEffect hooks to perform different tasks.
     const update_time = (event) => {
-        
+
         //after the curent time is obtained from the audio we update the songtime to convey it to the user.
         let sec = Math.floor(event.target.currentTime) % 60;
         let min = Math.floor(Math.floor(event.target.currentTime) / 60);
@@ -53,7 +53,7 @@ const MusicPlayer = () => {
     }
 
     useEffect(() => {
-        music.current.src = currentSong.audio;
+        music.current.src = "/music/Hai Junoon@1670581568723";
         //when the new song load just start  playing the song
         musicPlay.current = true;
         music.current.play();
@@ -76,7 +76,7 @@ const MusicPlayer = () => {
         if (!firstTimeRender.current)
             liked ? add_to_fav() : remove_from_fav();
     }, [liked]);
- 
+
 
     useEffect(() => {
         //used because whenever for the first time the page is loaded then the song is not liked/put on repeat by default
@@ -85,9 +85,9 @@ const MusicPlayer = () => {
 
     const myfunc = () => {
         musicPlay.current = !musicPlay.current
-        if(musicPlay.current){
+        if (musicPlay.current) {
             music.current.play();
-        }else{
+        } else {
             music.current.pause();
         }
     }
@@ -101,23 +101,23 @@ const MusicPlayer = () => {
     }
 
     const update_info_repeat = () => {
-        if(randomRef.current.style.color !== theme.color) {
+        if (randomRef.current.style.color !== theme.color) {
             randomRef.current.style.color = theme.color;
             replayRef.current.style.color = '#4cd137';
-        }else if(replayRef.current.style.color !== theme.color){
+        } else if (replayRef.current.style.color !== theme.color) {
             replayRef.current.style.color = theme.color;
-        }else{
+        } else {
             replayRef.current.style.color = '#4cd137';
         }
     }
 
     const update_info_random = () => {
-        if(replayRef.current.style.color !== theme.color) {
+        if (replayRef.current.style.color !== theme.color) {
             replayRef.current.style.color = theme.color;
             randomRef.current.style.color = '#4cd137';
-        }else if(randomRef.current.style.color !== theme.color){
+        } else if (randomRef.current.style.color !== theme.color) {
             randomRef.current.style.color = theme.color;
-        }else{
+        } else {
             randomRef.current.style.color = '#4cd137';
         }
     }
@@ -134,7 +134,7 @@ const MusicPlayer = () => {
     //changing the song
     const nextMusic = () => {
         //if you are playing the next song and if the current song was on repeat, then remove it from repeat
-        if(replayRef.current.style.color !== theme.color) {
+        if (replayRef.current.style.color !== theme.color) {
             replayRef.current.style.color = theme.color;
         }
         //   dispatch({type : "CHANGE_MUSIC" , payload : {index : ((currentSong.index + 1) % Data.length)}});
@@ -144,8 +144,8 @@ const MusicPlayer = () => {
 
     //changing the song
     const prevMusic = () => {
-         //if you are playing the previous song and if the current song was on repeat, then remove it from repeat
-         if(replayRef.current.style.color !== theme.color) {
+        //if you are playing the previous song and if the current song was on repeat, then remove it from repeat
+        if (replayRef.current.style.color !== theme.color) {
             replayRef.current.style.color = theme.color;
         }
         if (currentSong.id === 0) {
@@ -165,7 +165,7 @@ const MusicPlayer = () => {
                     </div>
                     <img className={musicPlay.current ? "myimg anime" : "myimg"} src={currentSong.src} alt="song cover page" />
                     <audio className="music" ref={music}>
-                        <source src={currentSong.audio} type="audio/mp3" />
+                        <source src="music/Hai Junoon@1670581568723" type="audio/mp3" />
                     </audio>
                     <div className="progressbar">
                         <div className="timer">
@@ -184,8 +184,8 @@ const MusicPlayer = () => {
                         <div className="next" onClick={nextMusic} style={{ color: `${theme.color}` }}><FontAwesomeIcon title="Next" icon={faForward} /></div>
                     </div>
                     <div className="icons">
-                        <div className="random"  style={{color : `${theme.color}`}} onClick={update_info_random} ref={randomRef}><FontAwesomeIcon icon={faRandom} title="Shuffle" /></div>
-                        <div className="repeat"  style={{color : `${theme.color}`}} onClick={update_info_repeat} ref={replayRef}><FontAwesomeIcon title="Repeat" icon={faRedo} /></div>
+                        <div className="random" style={{ color: `${theme.color}` }} onClick={update_info_random} ref={randomRef}><FontAwesomeIcon icon={faRandom} title="Shuffle" /></div>
+                        <div className="repeat" style={{ color: `${theme.color}` }} onClick={update_info_repeat} ref={replayRef}><FontAwesomeIcon title="Repeat" icon={faRedo} /></div>
                         <div className="like" style={{ color: `${liked ? '#4cd137' : theme.color}` }} onClick={update_info_like}><FontAwesomeIcon title="Like" icon={faHeart} /></div>
                     </div>
                 </div>

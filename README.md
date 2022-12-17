@@ -14,7 +14,7 @@ MUSIC PLAYER:
 
 ![image](https://user-images.githubusercontent.com/56965636/208239040-3b2959ae-c98a-4696-91c3-ac2729343cee.png)
 
-SEARCH COVER:
+SEARCH COVER: 
 ![image](https://user-images.githubusercontent.com/56965636/208239058-8b33f23e-9dea-4fe8-a958-c6d34515f144.png)
 
 

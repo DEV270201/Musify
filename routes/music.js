@@ -4,25 +4,25 @@ const upload1 = require("../utils/MusicUploader");
 // const upload2 = require("../utils/MusicCoverPage");
 // const mongoose = require('mongoose');
 const { ClientError } = require("../handlers/Error");
-const { Uploader } = require("../controller/controller");
+const { Uploader, Fetcher } = require("../controller/controller");
 // const Auth = require('../Middleware/Auth');
 // const User = require('../models/User');
 
 
-// router.get('/',Auth,async (req,res,next)=>{
-//   try{
-//     let resp = await Fetcher(req);
-//     // console.log("res : ",resp);
-//     res.status(200).json({
-//       status : "success",
-//       data : resp
-//     });
+router.get('/', async (req, res, next) => {
+  try {
+    let resp = await Fetcher(req);
+    // console.log("res : ",resp);
+    res.status(200).json({
+      status: "success",
+      data: resp
+    });
 
-//   }catch(err){
-//     console.log("in the files router : ",err);
-//     return next(err);
-//   }
-// });
+  } catch (err) {
+    console.log("in the files router : ", err);
+    return next(err);
+  }
+});
 
 //uploading file to the server
 router.post("/upload", [upload1.single('music')], async (req, res, next) => {
@@ -61,21 +61,10 @@ router.get('/:fname', async (req, res, next) => {
         'Content-Length': chunkSize,
         'Content-Type': file[0].contentType,
       };
-      res.writeHead(206, header);
+      // res.writeHead(206, header);
       //piping the file chunks to the response
       bucket.openDownloadStreamByName(req.params.fname).pipe(res);
-    } else {
-
     }
-    //updating the count
-    //  let download_num = await User.findByIdAndUpdate(req.user.id,{$inc : {num_download:1}},{
-    //   fields : {num_download:1},
-    //   new : true
-    //  }
-    //  );
-
-    //appending to the header
-    //  res.append('download',download_num.num_download);
 
     //piping the file chunks to the response
     // bucket.openDownloadStreamByName(req.params.fname).pipe(res);

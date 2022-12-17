@@ -12,14 +12,14 @@ const MusicCompo = () => {
         <div className="music_compo_inner">
           <div className="steps1">
             <p className="music_text1">Play Your Music!<FontAwesomeIcon icon={faLongArrowAltLeft}></FontAwesomeIcon></p>
-            <p className="music_text2">Amazing Playists!<FontAwesomeIcon icon={faLongArrowAltLeft}></FontAwesomeIcon></p>
+            <p className="music_text2">Repeat it!<FontAwesomeIcon icon={faLongArrowAltLeft}></FontAwesomeIcon></p>
           </div>
           <div className="image_compo">
             <img src={img} className="my_music_img" alt="demo_music" />
           </div>
           <div className="steps2">
             <p className="music_text1"><FontAwesomeIcon icon={faLongArrowAltRight}></FontAwesomeIcon>Add to favs!</p>
-            <p className="music_text2"><FontAwesomeIcon icon={faLongArrowAltRight}></FontAwesomeIcon>Like and Share!</p>
+            <p className="music_text2"><FontAwesomeIcon icon={faLongArrowAltRight}></FontAwesomeIcon>Shuffle it!</p>
           </div>
         </div>
       </div>

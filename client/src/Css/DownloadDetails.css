@@ -97,11 +97,11 @@
 .dark{
     background-color : #000;
     color : dodgerblue;
-    border: 1px solid dodgerblue;
+    border: 1px solid #003297;
 }
 
 .dark:hover{
-    background-color : dodgerblue;
+    background-color: #003297;
     color : #000;
 }
 

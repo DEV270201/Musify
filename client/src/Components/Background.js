@@ -29,9 +29,9 @@ const Background = () => {
                     </div>
                     <div className="message">
                         <h3 className="msg">Tired ? Work Stress ? Don't Worry !</h3>
-                        <h3 className="msg">Listen to your Favourite Songs !</h3>
+                    <h3 className="msg">Listen to your Favourite Guitar Covers !</h3>
                         <h3 className="msg">Just on <span id="span">MUSIFY !</span></h3>
-                        <button className="download"><NavLink to="/download">Go To Downloads <FontAwesomeIcon icon={faLongArrowAltRight}></FontAwesomeIcon></NavLink></button>
+                    <button className="download"><NavLink to="/download">Go To Player <FontAwesomeIcon icon={faLongArrowAltRight}></FontAwesomeIcon></NavLink></button>
                     </div>
                 </div>
         </>

@@ -46,7 +46,7 @@ const Navbar = ()=>{
                 {/* <h4  className={menu ? "link_head active_head" : "link_head"}><FontAwesomeIcon size="lg" className="music" icon={faMusic}/>Musify</h4> */}
                 {/* <hr /> */}
                 <li onClick={()=> menu_ref.current.classList.toggle("active")}><NavLink className="nav_link"  exact to="/" >Home</NavLink></li>
-                <li onClick={()=> menu_ref.current.classList.toggle("active")}><NavLink className="nav_link"  to="/online" >Online</NavLink></li>
+                    {/* <li onClick={()=> menu_ref.current.classList.toggle("active")}><NavLink className="nav_link"  to="/online" >Online</NavLink></li> */}
                 <li onClick={()=> menu_ref.current.classList.toggle("active")}><NavLink className="nav_link"  to="/favourite" >Favourites</NavLink></li>
             </ul>
             <div className="toggle">

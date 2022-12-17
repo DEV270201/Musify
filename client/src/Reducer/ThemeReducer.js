@@ -1,7 +1,7 @@
 //THEME REDUCER
 const dark = {
     backgroundColor : "black",
-    color : "dodgerblue",
+    color: "#003297",
     theme : "dark",
 }
 

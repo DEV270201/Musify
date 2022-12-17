@@ -7,7 +7,7 @@ const ShowDownloadDetails = ({results})=>{
       {
         results.map((song)=>{
             return(
-                <div key={song.id}>
+              <div key={song._id}>
                    <DownloadDetails song={song} />
                 </div>
             );  

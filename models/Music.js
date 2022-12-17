@@ -23,9 +23,9 @@ const MusicSchema = new mongoose.Schema({
     filesize: {
         type: Number,
     },
-    singer: {
+    musician: {
         type: String,
-        required: [true, "Please enter the name of the singer as well.."]
+        required: [true, "Please enter the name of the musician as well.."]
     },
     duration_in_seconds: {
         type: Number,
